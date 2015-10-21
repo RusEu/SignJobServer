@@ -1,14 +1,15 @@
 <html>
 	<body>
 
-   {% if user and not user.is_anonymous %}
-     Hello {{ user.get_full_name|default:user.username }}!
+   {% if user %}
+     Hello {{ user.social_alias }}!
      <br>
-     Your email address is {{ user.email}}
+     Your email address is {{ user.social_email}}
      <br>
-     Your id is: {{user.id}}
+     Your id is: {{user.social_id}}
      <br>
-     Avatar : {{user.userprofile}} {{user.avatar}} {{user.user_details}}
+     Avatar : 
+     <img src="{{user.social_avatar}}">
    {% else %}
      I don’t think we’ve met before.
    {% endif %}

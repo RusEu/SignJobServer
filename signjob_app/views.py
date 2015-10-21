@@ -1,5 +1,6 @@
 from django.shortcuts import render,render_to_response
 from django.contrib.auth.models import User
+from user_profile.models import UserProfile
 from social.backends.google import GoogleOAuth2
 from xhtml2pdf import pisa             # import python module
 
@@ -47,5 +48,8 @@ def save_profile(backend, user, response, *args, **kwargs):
             user.save()
 
 def profile(request):
-	user = request.user
+	email = request.user.email
+	print email
+	user = UserProfile.objects.get(social_email=str(email))
+
 	return render_to_response("profile.html",{"user":user})
