@@ -1,0 +1,17 @@
+<html>
+	<body>
+
+   {% if user and not user.is_anonymous %}
+     Hello {{ user.get_full_name|default:user.username }}!
+     <br>
+     Your email address is {{ user.email}}
+     <br>
+     Your id is: {{user.id}}
+     <br>
+     Avatar : {{user.userprofile}} {{user.avatar}} {{user.user_details}}
+   {% else %}
+     I don’t think we’ve met before.
+   {% endif %}
+	</body>
+	
+</html>
